@@ -1,0 +1,966 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: cursive , 'Vazir';
+}
+::selection {background-color: #05a091;}
+body{
+    background: linear-gradient(50deg,#b9b9b9 0%, #9b9b9b 40%,#888888 60%, #474747 100%) fixed ;
+}
+body.lightMode {background: linear-gradient(230deg,#dddddd 0%, #b6b6b6 40%,#b8b8b8 60%, #939393 100%) fixed ;}
+@font-face {
+    font-family: 'Vazir';
+    src:url('font/vazir/Vazir.eot') format('eot'),
+        url('font/vazir/Vazir.woff') format('woff'),
+        url('font/vazir/Vazir.woff2') format('woff2'),
+        url('font/vazir/Vazir.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.hidden {visibility: hidden;}
+.visible {visibility: visible;}
+.filter {filter: brightness(100%);}
+.filterOpc {filter: brightness(60%);}
+.relative {position: relative;}
+.backWhite1 {background-color: #fff;}
+.colorblack1 {color: #000;}
+#telegram {
+    position: relative;
+    width: 800px;
+    height: 540px;
+    margin: 50px auto;
+    background-color: #282e33;
+    display: flex;
+    overflow: hidden;
+}
+#telegram > div:not(#proxyList,#leftMenu).backWhite1 {background-color: #fff;}
+#telegram > .left {
+    width: 36%;
+    background-color: #282e33;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #353b3f;
+}
+#telegram > .left.lightMode {border-right: 1px solid #dbdbdb;}
+#telegram > .left > .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+}
+#telegram > .left > .top > .search-box {width: 80%;}
+#telegram > .left > .top > .search-box > #searchChat {
+    background-color: #4e555c;
+    border: none;
+    outline: none;
+    width: 90%;
+    height: 30px;
+    border-radius: 3px;
+    padding: 0 5px;
+    caret-color: #fff;
+    color: #fff;
+}
+#telegram > .left > .top > .search-box > #searchChat.backWhite1 {background-color: #f5f5f5;color: #000;}
+#telegram > .left > .top > .search-box > #searchChat::placeholder {color: #aaaaaa;}
+#telegram > .left > .top > .hamburger-menu {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#telegram > .left > .bottom {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(100% - 52px);
+}
+#telegram > .left > .bottom > .channel {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    padding: 5px 5px 5px 8px;
+    cursor: pointer;
+}
+#telegram > .left > .bottom > .channel:hover {background-color: #353c43;}
+#telegram > .left > .bottom > .channel.channelNightMode:hover {background-color: #eee;}
+#telegram > .left > .bottom > .channel > .left {
+    width: 20%;
+    height: 100%;
+    margin-right: 10px;color: #009687b6;
+    display: flex;
+    align-items: center;
+}
+#telegram > .left > .bottom > .channel > .left > #profileImg {
+    width: 47px;
+    border-radius: 50%;
+}
+#telegram > .left > .bottom > .channel > .right {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+#telegram > .left > .bottom > .channel > .right > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    margin: 2px 0;
+}
+#telegram > .left > .bottom > .channel > .right > .top > #channelName {
+    font-size: 14px;
+    color: #fff;
+}
+#telegram > .left > .bottom > .channel > .right > .top > #channelName.colorblack1 {color: #000;}
+#telegram > .left > .bottom > .channel > .right > .top > #channelLastMessageTime {
+    font-size: 12px;
+    color: #8e8e8e;
+    margin-left: 10px;
+}
+#telegram > .left > .bottom > .channel > .right > .bottom > #channelLastMessage {
+    font-size: 13px;
+    color: #8e8e8e;
+}
+#telegram > .left > .bottom > .channel > .right > .bottom > #channelCounterMessage {
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 50px;
+    background-color: #05a091;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#telegram > .left > .bottom > .channel > .right > .bottom > .cCM.backBlue {background-color: #40a7e3;}
+#telegram > .left > .bottom > #loadingMassage {
+    color: #74868a;
+    position: absolute;
+    top: 10%;
+    font-size: 14px;
+}
+#telegram > .left > .bottom > #proxyIcon {
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    cursor: pointer;
+}
+#telegram > #chatBackground {
+    position: relative;
+    width: 64%;
+    background-color: #18191d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#telegram > #chatBackground.lightMode {
+    background-image: url(images/chat-background.png) ;
+    background-size: 100% 100%;
+}
+#telegram > #chatBackground > #selectChat {
+    color: #fff;
+    border-radius: 50px;
+    padding: 5px;
+    background-color: #2f343b;
+    font-size: 14px;
+}
+#telegram > #chatBackground > #selectChat.lightMode {background-color: #2f343b83;}
+#telegram > #chatBackground > .top {
+    width: 100%;
+    height: 52px;
+    background-color: #282e33;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+}
+#telegram > #chatBackground > .top.backWhite1 {background-color: #fafafa;}
+#telegram > #chatBackground > .top > .left {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+    padding-left: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+#telegram > #chatBackground > .top > .left:hover {background-color: #343a40;}
+#telegram > #chatBackground > .top > .left > .chatName {
+    color: #fff;
+    height: 50%;
+}
+#telegram > #chatBackground > .top.backWhite1 > .left:hover {background-color: #e0e0e0;}
+#telegram > #chatBackground > .top.backWhite1 > .left > .chatName {color: #000;}
+#telegram > #chatBackground > .top > .left > .lastSeenOrMember {
+    color: #82868a;
+    font-size: 14px;
+    height: 50%;
+}
+#telegram > #chatBackground > .top > .right {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#telegram > #chatBackground > .top > .right > img {
+    padding: 17px;
+    height: 100%;
+    cursor: pointer;
+}
+#telegram > #chatBackground > .top > .right > #searchMessage {
+    caret-color: #05a091;
+    padding-left: 10px;
+    font-size: 14px;
+    position: absolute;
+    left: -120%;
+    bottom: 0%;
+    border: none;
+    outline: none;
+    background-color: #3c3c3c;
+    color: #fff;
+    border: 2px solid #05a091;
+    border-radius: 0 0 0 15px;
+    visibility: hidden;
+}
+#telegram > #chatBackground.lightMode > .top > .right > #searchMessage {
+    background-color: #dbdbdb;
+    color: #000;
+}
+#telegram > #chatBackground > .top > .right > img:hover {filter: brightness(200%);}
+#telegram > #chatBackground > .top.backWhite1 > .right > img:hover {filter: brightness(20%);}
+#telegram > #chatBackground > .center {
+    width: 100%;
+    height: 81%;
+    position: absolute;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#telegram > .right > .center > .messageParentM , #telegram > .right > .center > .messageParentU {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 100%;
+    margin: 3% 0;
+    position: relative;
+}
+#telegram > #chatBackground.lightMode > .center > .messageParentM > .message , #telegram > #chatBackground.lightMode > .center > .messageParentU > .message {
+    color: #000;
+    background-color: #dfe5eb;
+    border: 1px solid #d4d4d4;
+}
+#telegram > .right > .center > .messageParentU {justify-content: flex-start;}
+#telegram > .right > .center > .messageParentM > .message , #telegram > .right > .center > .messageParentU > .message {
+    color: #fafafa;
+    white-space: normal;
+    background-color: #18191d;
+    padding: 5px 90px 3px 5px;
+    text-indent: 5px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    display: flex;
+    position: relative;
+    text-align: right;
+    margin-left: 43px;
+    font-size: 15px;
+}
+#telegram > .right > .center > .messageParentM > .message > .name , #telegram > .right > .center > .messageParentU > .message > .name {
+    color: #68ccf3;
+    background-color: #18191d;
+    font-size: 12px;
+    position: absolute;
+    top: -25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#telegram > #chatBackground.lightMode > .center > .messageParentM > .message > .name , #telegram > #chatBackground.lightMode > .center > .messageParentU > .message > .name {
+    background-color: #dfe5eb;
+    border-radius: 25px;
+}
+#telegram > .right > .center > .messageParentM > .profileImg , #telegram > .right > .center > .messageParentU > .profileImg {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: absolute;
+    left: 1%;
+    top: 2%;
+}
+#telegram > .right > .center > .messageParentM > .message > .messageTime , #telegram > .right > .center > .messageParentU > .message > .messageTime {
+    font-size: 12px;
+    color: #8e8e8e;
+    margin: 0 9px;
+    position: absolute;
+    right: 25px;
+    bottom: 0;
+}
+#telegram > .right > .center > .messageParentM > .message > .sendImg , #telegram > .right > .center > .messageParentU > .message > .sendImg  {
+    position: absolute;
+    right: 10px;
+    bottom: 2%;
+}
+#telegram > .right > .bottom {
+    background-color: #282e33;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+#telegram > .right > .bottom.backWhite1 {background-color: #fafafa;}
+#telegram > .right > .bottom > img {
+    margin: 0 5px;
+    padding: 10px;
+    height: 100%;
+    cursor: pointer;
+}
+#telegram > .right > .bottom > img:hover {filter: brightness(200%);}
+#telegram > .right > .bottom.backWhite1 > img:hover {filter: brightness(20%);}
+#telegram > .right > .bottom > input {
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 80%;
+    padding-left: 5px;
+    background-color: #282e33;
+    color: #efefef;
+}
+#telegram > .right > .bottom > #stickerBox {
+    padding: 5px;
+    position: relative;
+    width: 200px;
+    height: 190px;
+    position: absolute;
+    right: 10px;
+    top: -200px;
+    background-color: #282e33;
+    border-radius: 20px;
+    border: 1px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    visibility: hidden;
+}
+#telegram > .right.lightMode > .bottom > #stickerBox {background-color: #f5f5f5;}
+#telegram > .right > .bottom > #stickerBox > img {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+#telegram > .right > .bottom > #stickerBox > img:hover {filter: brightness(150%);}
+#telegram > .right > .bottom > #stickerBox > .sticker {
+    border: 1px solid #05a091;
+    border-radius: 5px;
+    margin: 5px 10px;
+    padding: 5px;
+    height: 34px;
+    width: 34px;
+    cursor: pointer;
+}
+
+
+#telegram > .right > .bottom > #imgBox {
+    padding: 5px;
+    position: relative;
+    width: 500px;
+    height: 290px;
+    position: absolute;
+    right: 10px;
+    top: -300px;
+    background-color: #282e33;
+    border-radius: 20px;
+    border: 1px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    visibility: hidden;
+}
+#telegram > .right.lightMode > .bottom > #imgBox {background-color: #f5f5f5;}
+    #telegram > .right > .bottom > #imgBox > #closeImgBoxImg {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 15px;
+    cursor: pointer;
+}
+#telegram > .right > .bottom > #imgBox > #closeImgBoxImg:hover {filter: brightness(150%);}
+#telegram > .right > .bottom > #imgBox > .sendImg {
+    border: 2px solid #05a091;
+    border-radius: 15px;
+    margin: 5px 10px;
+    height: 83px;
+    width: 85px;
+    cursor: pointer;
+}
+
+
+
+#telegram > .right > .bottom.backWhite1 > input {
+    background-color: #fafafa;
+    color: #000;
+}
+#telegram > .right > .bottomFC {
+    height: 45px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #282e33;
+    color: #3ee2cc;
+    font-size: 18px;
+    transition: .3s background-color;
+    cursor: pointer;
+}
+#telegram > .right > .bottomFC.lightMode {
+    background-color: #fafafa;
+    color: #40a7e3;
+}
+#telegram > .right > .bottomFC.lightMode:hover {background-color: #e8e8e8;}
+#telegram > .right > .bottomFC:hover {background-color: #31363c;}
+#telegram > #proxyList {
+    width: 360px;
+    height: 450px;
+    border-radius: 10px;
+    background-color: #282e33;
+    border: 1px solid #606060;
+    color: #fff;
+    position: absolute;
+    left: 27%;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+#telegram > #proxyList.backWhite1 , #telegram > #addProxyList.backWhite1 {
+    background-color: #f9f9f9;
+    color: #000;
+}
+#telegram > #proxyList > .title , #telegram > #addProxyList > .title ,  #telegram > #addProxyList > #proxyAddress > .title {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+#telegram > #proxyList > .proxy-mods , #telegram > #proxyList > .proxy {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    font-size: 15px;
+}
+#telegram > #proxyList > .proxy {position: relative;}
+#telegram > #proxyList > .proxy-mods > input , #telegram > #proxyList > .proxy > input {display: none;}
+#telegram > #proxyList > .proxy-mods > input:checked + label , #telegram > #proxyList > .proxy > input:checked + label {
+    background-image: url(images/radio-active.png);
+    background-size: 20px 20px;
+}
+#telegram > #proxyList > .proxy-mods > label , #telegram > #proxyList > .proxy > label {
+    background-image: url(images/radio.png);
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+#telegram > #proxyList > #proinfo {
+    color: #616e71;
+    background-color: #313b43;
+    padding: 5px 15px;
+    margin: 10px -15px;
+    font-size: 13px;
+}
+#telegram > #proxyList > #proinfo.backWhite1 {
+    color: #000;
+    background-color: #d0d0d0;
+}
+#telegram > #proxyList > .proxy > .proxy-info {
+    display: flex;
+    flex-direction: column;
+}
+#telegram > #proxyList > .proxy > .proxy-info > .top {
+    display: flex;
+    font-weight: 600;
+}
+#telegram > #proxyList > .proxy > .proxy-info > .top > .proxy-name {
+    font-weight: normal;
+    font-size: 14px;
+    color: #b9b9b9;
+}
+.act-pro {color: #3ee2cc;}
+.not-pro {color: #de1515;}
+#telegram > #proxyList > .bottom , #telegram > #addProxyList > .bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    background-color: inherit;
+}
+#telegram > #proxyList > .bottom > div , #telegram > #addProxyList > .bottom > div {
+    color: #3ee2cc;
+    margin: 0 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+#telegram > #proxyList > .bottom > div:hover , #telegram > #addProxyList > .bottom > div:hover {background: #32383e;}
+#telegram > #proxyList > .bottom.backWhite1 > div:hover , #telegram > #addProxyList.backWhite1 > .bottom > div:hover {background: #efefef;}
+/* #telegram > #proxyList > #rs {visibility: inherit;} */
+#telegram > #proxyList > .proxy > #threedotpro1 , #telegram > #proxyList > .proxy > #threedotpro2 , #telegram > #proxyList > .proxy > #threedotpro3 {
+    position: absolute;
+    right: 2%;
+    top: 40%;
+    cursor: pointer;
+    padding: 7px;
+}
+#telegram > #proxyList > .proxy > #threedotpro1:hover , #telegram > #proxyList > .proxy > #threedotpro2:hover ,
+#telegram > #proxyList > .proxy > #threedotpro3:hover{filter: brightness(200%);}
+#telegram > #proxyList > .proxy > #threedotpro1:hover + #deletePro1 , #telegram > #proxyList > .proxy > #threedotpro2:hover + #deletePro2 ,
+#telegram > #proxyList > .proxy > #threedotpro3:hover + #deletePro3 {
+    opacity: 1;
+    visibility: visible;
+}
+#telegram > #proxyList > .proxy > #deletePro1 , #telegram > #proxyList > .proxy > #deletePro2 , #telegram > #proxyList > .proxy > #deletePro3 {
+    box-shadow: 0 0 1px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 8%;
+    bottom: -35%;
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s;
+}
+#telegram > #proxyList > .proxy > #deletePro1:hover , #telegram > #proxyList > .proxy > #deletePro2:hover , #telegram > #proxyList > .proxy > #deletePro3:hover {
+    background-color: #333a3f;
+    opacity: 1;
+    visibility: visible;
+}
+#telegram > #proxyList > .proxy.lightMode > #deletePro1:hover , #telegram > #proxyList > .proxy.lightMode > #deletePro2:hover , #telegram > #proxyList > .proxy.lightMode > #deletePro3:hover {
+    color: #fff;
+    opacity: 1;
+    visibility: visible;
+}
+#telegram > #proxyList > .proxy > #deletePro1 > img , #telegram > #proxyList > .proxy > #deletePro2 > img , #telegram > #proxyList > .proxy > #deletePro3 > img {margin-right: 20px;}
+#telegram > #addProxyList {
+    width: 360px;
+    height: 400px;
+    border-radius: 10px;
+    background-color: #282e33;
+    border: 1px solid #606060;
+    color: #fff;
+    position: absolute;
+    left: 27%;
+    top: 12%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+#telegram > #addProxyList > #addProxyError {
+    position: absolute;
+    right: 3%;
+    top: 12%;
+    color: #de1515;
+    background-color: #282e33;
+    font-size: 18px;
+}
+#telegram > #addProxyList.backWhite1 > #addProxyError {background-color: #fff;}
+#telegram > #addProxyList > #serverType {
+    position: absolute;
+    top: 25%;
+}
+#telegram > #addProxyList > #proxyAddress {
+    position: absolute;
+    top: 40%;
+    display: flex;
+    flex-direction: column;
+}
+#telegram > #addProxyList > #proxyAddress > div , #telegram > #addProxyList > #proxyAddress > input  {margin: 10px 0;}
+#telegram > #addProxyList > #proxyAddress > div > input , #telegram > #addProxyList > #proxyAddress > input {
+    background-color: #282e33;
+    color: #fff;
+    font-size: 15px;
+    padding: 5px 0;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #6f6f6f;
+    margin: 0 5px 1px 5px;
+}
+#telegram > #addProxyList.backWhite1 > #proxyAddress > input , #telegram > #addProxyList.backWhite1 > #proxyAddress > div > input {
+    color: #000;
+    background-color: #a0a0a042;
+    box-shadow: 0 0 10px #c9c9c963;
+}
+#telegram > #addProxyList > #proxyAddress > div > input::placeholder , #telegram > #addProxyList > #proxyAddress > input::placeholder {
+    color: #7d8286;
+}
+.animationProxy {animation: proxyErorr .5s linear forwards;}
+#telegram > #addProxyList > #proxyAddress > div > input:focus , #telegram > #addProxyList > #proxyAddress > input:focus {
+    border-bottom: 2px solid #3ee2cc;
+    margin: 0 5px 0 5px;
+}
+#telegram > #addProxyList > #proxyAddress > div > #proxyHostName {width: 200px;}
+#telegram > #addProxyList > #proxyAddress > div > #proxyPort {width: 80px;}
+@keyframes proxyErorr {
+    0% {transform: translate(5px , 2px);}
+    25% {transform: translate(-5px , 2px);}
+    50% {transform: translate(-5px , -2px);}
+    50% {transform: translate(5px , -2px);}
+    100% {transform: translate(0px , 0px);}
+}
+#telegram > #leftMenu {
+    width: 270px;
+    height: 100%;
+    background-color: #282e33;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: -33.8%;
+    z-index: 999;
+    transition: .4s;
+}
+#telegram > #leftMenu.backWhite1 {background-color: #fff;}
+#telegram > #leftMenu.leftMenuActive {left: 0;}
+#telegram > #leftMenu > #closeLeftMenu {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    width: 16px;
+    cursor: pointer;
+}
+#telegram > #leftMenu > #closeLeftMenu:hover {filter: brightness(150%);}
+#telegram > #leftMenu > #myProfile {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 6%;
+    left: 6%;
+}
+#telegram > #leftMenu > #myName {
+    position: absolute;
+    top: 18%;
+    left: 7%;
+    color: #fff;
+}
+#telegram > #leftMenu > #myName.colorblack1 {color: #000;}
+#telegram > #leftMenu > #editProfile {
+    position: absolute;
+    top: 22%;
+    left: 7%;
+    color: #4be1c3;
+    font-size: 14px;
+    cursor: pointer;
+}
+#telegram > #leftMenu > #editProfile:hover {text-decoration: underline;}
+#telegram > #leftMenu > #items {
+    position: absolute;
+    top: 27%;
+    left: 0;
+    color: #fff;
+    width: 100%;
+}
+#telegram > #leftMenu > #items.colorblack1 {color: #000;}
+#telegram > #leftMenu > #items > div {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+#telegram > #leftMenu > #items > div:hover {background-color: #858585;}
+#telegram > #leftMenu > #items > div > img {margin: 0 20px;}
+#telegram > #leftMenu > #version {
+    position: absolute;
+    bottom: 4%;
+    left: 7%;
+    color: #82868a;
+    font-size: 14px;
+}
+.theme-switch-wrapper {
+    width: 50px;
+    position: absolute;
+    right: 3%;
+} 
+.theme-switch {
+    display: inline-block;
+    height: 15px;
+    position: relative;
+    width: 40px;
+} 
+.theme-switch input {display:none;}
+.slider {
+    background-color: #5f5f5f;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+.slider:before {
+    bottom: -3px;
+    content: "";
+    width: 17px;
+    height: 17px;
+    left: -2px;
+    position: absolute;
+    transition: .4s;
+    background-color: #ffffff;
+    border: 2px solid #282e33;
+}
+input:checked + .slider {background-color: #3fc1b0;}
+input:checked + .slider:before {
+    transform: translateX(26px);
+    background-color: #282e33;
+    border: 2px solid #3fc1b0;
+}
+.slider.round {border-radius: 34px;}
+.slider.round:before {border-radius: 50%;}
+#holder {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(11, 11, 11, 0.512);
+}
+#telegram > #info {
+    width: 400px;
+    height: 450px;
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    background-color: #282e33;
+    border-radius: 10px;
+}
+#telegram > #info.lightMode {background-color: #f9f9f9;}
+#telegram > #info > #closeInfo {
+    position: absolute;
+    right: 8%;
+    top: 5%;
+    cursor: pointer;
+    width: 14px;
+}
+#telegram > #info > #closeInfo:hover {filter: brightness(150%);}
+#telegram > #info > #channelInfo {
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    color: #fff;
+    font-size: 16px;
+}
+#telegram > #info.lightMode > #channelInfo {color: #000;}
+#telegram > #info > #profileImg {
+    position: absolute;
+    left: 10%;
+    top: 15%;
+    border-radius: 50%;
+    width: 60px;
+}
+#telegram > #info > #channelName {
+    position: absolute;
+    left: 28%;
+    top: 17%;
+    color: #fff;
+}
+#telegram > #info.lightMode > #channelName {color: #000;}
+#telegram > #info > #lstOrMember {
+    position: absolute;
+    left: 28%;
+    top: 23%;
+    color: #bdbdbd;
+    font-size: 14px;
+}
+#telegram > #info.lightMode > #lstOrMember {color: #616161;}
+#telegram > #info > .hr {
+    position: absolute;
+    left: 0;
+    top: 35%;
+    height: 15px;
+    width: 400px;
+    background-color: #313b43;
+}
+#telegram > #info.lightMode > .hr {background-color: #9da2a6;}
+#telegram > #info > #content {
+    position: absolute;
+    left: 0%;
+    top: 45%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#telegram > #info > #content > #bioContainer {
+    display: flex;
+    align-items: center;
+    margin: 5px 0 35px 0;
+}
+#telegram > #info > #content > #bioContainer > #bioInfo {
+    width: 22px;
+    margin: 0 20px 0 30px;
+}
+#telegram > #info > #content > #bioContainer > #bio {color: #f4f4f4;}
+#telegram > #info.lightMode > #content > #bioContainer > #bio {color: #000;}
+#telegram > #info > #content > #notificationsContainer {
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0;
+}
+#telegram > #info > #content > #notificationsContainer > #notification {color: #fff;}
+#telegram > #info.lightMode > #content > #notificationsContainer > #notification {color: #000;}
+#telegram > #info > #content > #notificationsContainer > #notifImg {
+    width: 18px;
+    margin: 0 25px 0 32px;
+}
+#telegram > #info > #content > #sendMessage {
+    color: #56dcce;
+    font-size: 18px;
+    margin: 10px 35px;
+    cursor: pointer;
+}
+#telegram > #info > #content > #deleteChannel {
+    color: #de1515;
+    font-size: 18px;
+    margin: 10px 35px;
+    cursor: pointer;
+}
+#telegram > #editProfileContent {
+    width: 400px;
+    height: 450px;
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    background-color: #282e33;
+    border-radius: 10px;
+}
+#telegram > #editProfileContent.lightMode {background-color: #f9f9f9;}
+#telegram > #editProfileContent > #closeEdit {
+    position: absolute;
+    right: 8%;
+    top: 5%;
+    cursor: pointer;
+    width: 14px;
+}
+#telegram > #editProfileContent > #closeEdit:hover {filter: brightness(150%);}
+#telegram > #editProfileContent > #editTitle {
+    position: absolute;
+    left: 8%;
+    top: 5%;
+    font-size: 18px;
+    color: #fff;
+}
+#telegram > #editProfileContent.lightMode > #editTitle {color: #000;}
+#telegram > #editProfileContent > #myProfileImg {
+    position: absolute;
+    left: 38%;
+    top: 16%;
+    border-radius: 50%;
+}
+#telegram > #editProfileContent > #changeMyProfileImg {
+    position: absolute;
+    left: 52%;
+    top: 31%;
+    cursor: pointer;
+}
+#telegram > #editProfileContent > #myProfName {
+    text-align: center;
+    position: relative;
+    top: 41%;
+    width: 100%;
+    color: #fff;
+    font-size: 17px;
+}
+#telegram > #editProfileContent.lightMode > #myProfName {color: #000;}
+#telegram > #editProfileContent > #situation {
+    text-align: center;
+    position: relative;
+    top: 43%;
+    width: 100%;
+}
+#telegram > #editProfileContent > .name {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 49%;
+    width: 100%;
+    height: 30px;
+    margin: 25px 0;
+}
+#telegram > #editProfileContent > .name > img {
+    margin-left: 30px;
+    width: 28px;
+}
+#telegram > #editProfileContent > .name > div {
+    color: #fff;
+    font-size: 18px;
+    margin: 0 40px 0 20px;
+}
+#telegram > #editProfileContent.lightMode > .name > div {color: #000;}
+#telegram > #editProfileContent > .name > input {
+    width: 50%;
+    position: absolute;
+    right: 5%;
+    padding-bottom: 3px;
+    background-color: inherit;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #4e555c;
+    color: #9c9c9c;
+}
+#telegram > #editProfileContent > .name > input:focus {border-bottom: 1px solid #949aa1;}
+#telegram > #editProfileContent > #applyChanges > #applyChangesBtn {
+    position: absolute;
+    bottom: 5%;
+    left: 38%;
+    width: 28%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #05a091;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+#telegram > #editProfileContent > #applyChanges > #applyChangesBtn:hover {box-shadow: 0 0 7px inset #000;transition: .2s;}
+#telegram > #selectProfile {
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    width: 80%;
+    height: 220px;
+    background-color: #282e33;
+    border: 1px solid #fff;
+    border-radius: 15px;
+}
+#telegram > #selectProfile > #closeSelPro {
+    position: absolute;
+    top: 8%;
+    right: 3%;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#telegram > #selectProfile > #closeSelPro:hover {filter: brightness(150%);}
+#telegram > #selectProfile > img:not(#closeSelPro) {
+    width: 95px;
+    height: 95px;
+    margin: 5px;
+    cursor: pointer;
+}
+.imgInPv {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+}

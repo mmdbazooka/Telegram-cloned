@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mamad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="telegram" class="filter" >
+        <div class="left">
+            <div class="top">
+                <div class="hamburger-menu">
+                    <img src="images/hamburger-menu.png" id="hamburgerMenuImg">
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search" id="searchChat" autocomplete="off">
+                </div>
+            </div>
+            <div class="bottom">
+                <div id="loadingMassage">Loading...</div>
+                <img src="images/proxyIcon.png" id="proxyIcon">
+            </div>
+        </div>
+        <div class="right" id="chatBackground">
+            <div class="top hidden" >
+                <div class="left">
+                    <div class="chatName"></div>
+                    <div class="lastSeenOrMember"></div>
+                </div>
+                <div class="right">
+                    <img src="images/pv-search.png" id="pvSearch" >
+                    <input type="text" id="searchMessage" autocomplete="off">
+                    <img src="images/pv-window.png" id="pvWindow" >
+                    <img src="images/threedot.png" id="pv3Noghte" >
+                </div>
+            </div>
+            <div class="center hidden" ></div>
+            <div class="bottom hidden">
+                <img src="images/sanjagh.png" id="pvSanjagh" onclick="closeIBox()">
+                <input type="text" id="chatInput" placeholder="Write a message..." autocomplete="off">
+                <img src="images/sticker.png" id="pvSticker" onclick="closeSBox()">
+                <img src="images/voice.png" id="pvVoice">
+                <div id="stickerBox">
+                    <img src="images/close.png" onclick="closeSBox()">
+                    <div class="sticker">❤️</div>
+                    <div class="sticker">🙏</div>
+                    <div class="sticker">👍</div>
+                    <div class="sticker">🥰</div>
+                    <div class="sticker">😂</div>
+                    <div class="sticker">😈</div>
+                    <div class="sticker">🤪</div>
+                    <div class="sticker">🤬</div>
+                    <div class="sticker">🥶</div>
+                    <div class="sticker">😐</div>
+                    <div class="sticker">🤚</div>
+                    <div class="sticker">🥺</div>
+                </div>
+                <div id="imgBox">
+                    <img src="images/close.png" id="closeImgBoxImg" onclick="closeIBox()">
+                    <img src="images/gallery/12.jpg" class="sendImg" onclick="sendImgFromGallery(0)">
+                    <img src="images/gallery/11.jpg" class="sendImg" onclick="sendImgFromGallery(1)">
+                    <img src="images/gallery/10.jpg" class="sendImg" onclick="sendImgFromGallery(2)">
+                    <img src="images/gallery/09.jpg" class="sendImg" onclick="sendImgFromGallery(3)">
+                    <img src="images/gallery/08.jpg" class="sendImg" onclick="sendImgFromGallery(4)">
+                    <img src="images/gallery/07.jpg" class="sendImg" onclick="sendImgFromGallery(5)">
+                    <img src="images/gallery/06.jpg" class="sendImg" onclick="sendImgFromGallery(6)">
+                    <img src="images/gallery/05.jpg" class="sendImg" onclick="sendImgFromGallery(7)">
+                    <img src="images/gallery/04.jpg" class="sendImg" onclick="sendImgFromGallery(8)">
+                    <img src="images/gallery/03.jpg" class="sendImg" onclick="sendImgFromGallery(9)">
+                    <img src="images/gallery/02.jpg" class="sendImg" onclick="sendImgFromGallery(10)">
+                    <img src="images/gallery/01.jpg" class="sendImg" onclick="sendImgFromGallery(11)">
+                </div>
+            </div>
+            <div class="bottomFC hidden">Mute</div>
+            <div id="selectChat">Select a chat to start messaging</div>
+        </div>
+        <div id="holder" class="hidden"></div>
+        <div id="leftMenu" class="">
+            <img src="images/close.png" id="closeLeftMenu">
+            <img src="" id="myProfile">
+            <div id="myName">Bazooka</div>
+            <div id="editProfile">Edit Profile</div>
+            <div id="items">
+                <div class="item"><img src="images/new-group.png" >New Group</div>
+                <div class="item"><img src="images/new-channel.png" >New Channel</div>
+                <div class="item" id="editProfile2"><img src="images/contacts.png" >Edit Profile</div>
+                <div class="item"><img src="images/calls.png" >Calls</div>
+                <div class="item" id="savedMessage"><img src="images/saved messages.png" >Saved Messages</div>
+                <div class="item"><img src="images/settings.png" >Settings</div>
+                <div class="item relative" style="cursor: default;"><img src="images/night-mode.png" >Night Mode
+
+                    <div class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox" >
+                            <div class="slider round"></div>
+                      </label>
+                    </div>
+
+                </div>
+            </div>
+            <div id="version">Telegram Desktop <br> Creator : Mmdbazooka</div>
+        </div>
+        <div id="proxyList" class="hidden">
+            <div class="title">Proxy settings</div>
+            <div class="proxy-mods"><input type="radio" name="proxy-s" id="proxyS1" ><label for="proxyS1"></label> Try connecting through IPv6</div>
+            <div class="proxy-mods"><input type="radio" name="proxy-s" id="proxyS2" ><label for="proxyS2"></label> Disable proxy</div>
+            <div class="proxy-mods"><input type="radio" name="proxy-s" id="proxyS3" ><label for="proxyS3"></label> Use system proxy settings</div>
+            <div class="proxy-mods"><input type="radio" name="proxy-s" id="proxyS4" checked><label for="proxyS4"></label> Use custom proxy</div>
+            <div id="proinfo">Proxy servers may be helpful in accessing Telegram if there is no connection in a specific region.</div>
+            <div class="proxy">
+                <input type="radio" name="proxy" id="proxy1" checked><label for="proxy1"></label>
+                <div class="proxy-info">
+                    <div class="top">MTPROTO &nbsp;<div class="proxy-name">jafar server</div></div>
+                    <div class="bottom not-pro" id="pro1">unavailable</div>
+                </div>
+                <div id="threedotpro1"><img src="images/threedot.png"></div>
+                <div id="deletePro1"><img src="images/delete.png" >Delete</div>
+            </div>
+            <div class="proxy">
+                <input type="radio" name="proxy" id="proxy2" ><label for="proxy2"></label>
+                <div class="proxy-info">
+                    <div class="top">MTPROTO &nbsp;<div class="proxy-name">mamad server</div></div>
+                    <div class="bottom act-pro" id="pro2">available (ping: 21 ms)</div>
+                </div>
+                <div id="threedotpro2"><img src="images/threedot.png"></div>
+                <div id="deletePro2"><img src="images/delete.png" >Delete</div>
+            </div>
+            <div class="proxy hidden" id="rs">
+                <input type="radio" name="proxy" id="proxy3"><label for="proxy3"></label>
+                <div class="proxy-info">
+                    <div class="top">MTPROTO &nbsp;<div class="proxy-name" id="newProN"></div></div>
+                    <div class="bottom act-pro" id="pro3">available (ping: 9234 ms)</div>
+                </div>
+                <div id="threedotpro3"><img src="images/threedot.png"></div>
+                <div id="deletePro3"><img src="images/delete.png" >Delete</div>
+            </div>
+            <div class="bottom">
+                <div id="closeProxy">Close</div>
+                <div id="addProxy">Add proxy</div>
+            </div>
+        </div>
+        <div id="addProxyList" class="hidden">
+            <div id="addProxyError" class="hidden">You Can't Add Any More Proxy</div>
+            <div class="title">Add Proxy</div>
+            <div id="serverType">MTPROTO &nbsp; &copysr; &nbsp;Proxy</div>
+            <div id="proxyAddress">
+                <div class="title">Socket address</div>
+                <div>
+                    <input type="text" id="proxyHostName" placeholder="Hostname">
+                    <input type="text" id="proxyPort" placeholder="Port">
+                </div>
+                    <div id="Credentials">Credentials</div>
+                    <input type="text" id="proxySecret" placeholder="Secret">
+            </div>
+            <div class="bottom">
+                <div id="saveProxy">Save</div>
+                <div id="cancelProxy">Cancel</div>
+            </div>
+        </div>
+        <div id="info" class="hidden"></div>
+        <div id="editProfileContent" class="hidden">
+            <img src="images/close.png" id="closeEdit">
+            <div id="editTitle">Edit Profile</div>
+            <img src="" id="myProfileImg" width="90" height="90">
+            <img src="images/change-Profile.png" id="changeMyProfileImg" width="38" height="38">
+            <div id="myProfName"></div>
+            <div id="situation"></div>
+            <div class="name">
+                <img src="images/name.png" >
+                <div>Name</div>
+                <input type="text" id="NameInput" autocomplete="off" value="bazooka">
+            </div>
+            <div class="name">
+                <img src="images/user name.png" >
+                <div>Username</div>
+                <input type="text" id="usernameInput" autocomplete="off" value="@mmdbazooka">
+            </div>
+            <div id="applyChanges">
+                <div id="applyChangesBtn">Apply Changes</div>
+            </div>
+        </div>
+        <div id="selectProfile" class="hidden">
+            <img src="images/close.png" id="closeSelPro">
+            <img src="images/profiles/01.jpg" onclick="changeProfImg(0)">
+            <img src="images/profiles/02.jpg" onclick="changeProfImg(1)">
+            <img src="images/profiles/03.jpg" onclick="changeProfImg(2)">
+            <img src="images/profiles/04.jpg" onclick="changeProfImg(3)">
+            <img src="images/profiles/05.jpg" onclick="changeProfImg(4)">
+            <img src="images/profiles/06.jpg" onclick="changeProfImg(5)">
+            <img src="images/profiles/07.jpg" onclick="changeProfImg(6)">
+            <img src="images/profiles/08.jpg" onclick="changeProfImg(7)">
+            <img src="images/profiles/09.jpg" onclick="changeProfImg(8)">
+            <img src="images/profiles/10.jpg" onclick="changeProfImg(9)">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
